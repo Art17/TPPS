@@ -27,13 +27,13 @@ namespace Europe
 
         public void setCityNeighbours()
         {
-            foreach (CountryName currentCountry in this.countryNames)
+            foreach (CountryName currentCountry in countryNames)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
                     if (currentCity.getNeighboursCount() == NumberOfNeighbours)
                         continue;
-                    foreach (CountryName anotherCountry in this.countryNames)
+                    foreach (CountryName anotherCountry in countryNames)
                     {
                         foreach (City anotherCity in anotherCountry.Cities)
                         {
@@ -52,7 +52,7 @@ namespace Europe
 
         public bool checkCountriesConnection()
         {
-            foreach (CountryName currentCountry in this.countryNames)
+            foreach (CountryName currentCountry in countryNames)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -78,7 +78,7 @@ namespace Europe
 
         public void distributeCoins()
         {
-            foreach (CountryName currentCountry in this.countryNames)
+            foreach (CountryName currentCountry in countryNames)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -86,7 +86,7 @@ namespace Europe
                 }
             }
 
-            foreach (CountryName currentCountry in this.countryNames)
+            foreach (CountryName currentCountry in countryNames)
             {
                 foreach (City currentCity in currentCountry.Cities)
                 {
@@ -99,13 +99,13 @@ namespace Europe
         {
             CountryNameComparer cc = new CountryNameComparer();
 
-            this.countryNames.Sort(cc);
+            countryNames.Sort(cc);
         }
 
         public bool checkCoinsDistribution(int days)
         {
-            bool ret = true;
-            foreach (CountryName currentCountry in this.countryNames)
+            countryNames.Sort((x, y) => (x.Name.CompareTo(y.Name)));
+            foreach (CountryName currentCountry in countryNames)
             {
                 int completeCityCount = 0;
                 foreach (City currentCity in currentCountry.Cities)
@@ -121,9 +121,9 @@ namespace Europe
                     Console.WriteLine(currentCountry.Name + " " + days);
                 }
                 if (completeCityCount != currentCountry.Cities.Count)
-                    ret = false;
+                    return true;
             }
-            return ret;
+            return false;
         }
     }
 

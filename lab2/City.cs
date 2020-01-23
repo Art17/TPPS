@@ -89,10 +89,9 @@ namespace Europe
 
         public void mergeCoins()
         {
-            bool isMatch;
             foreach (CoinsBalance ncb in newCoinsBalances)
             {
-                isMatch = false;
+                bool isMatch = false;
                 foreach (CoinsBalance cb in coinsBalances)
                 {
                     if (cb.CountryName.Equals(ncb.CountryName))
